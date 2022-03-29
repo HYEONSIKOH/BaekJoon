@@ -6,28 +6,70 @@
 int main(void) {
 	char str[101];
 	gets(str);
-	
-	char* ptr = str;
-	char *Cor[7] = { {"c="},{"c-"},{"d-"},{"lj"},{"nj"},{"s="},{"z="} };
+
+	int i = 0;
 
 	int len = strlen(str);
+	
 
-	for (int i = 0; i < 7; i++) {
-		if (strstr(ptr, Cor[i]) != NULL) {
-			len--;
-			ptr+=2;
-			printf("%s", ptr);
+	while (i<strlen(str)) {
+		
+		if (str[i] == 'c') {
+			if (str[i + 1] == '=') {
+				len--;
+				i += 2;
+				continue;
+			}
+			else if (str[i + 1] == '-') {
+				len--;
+				i += 2;
+				continue;
+			}
 		}
 
-		else if (strstr(ptr, "dz=") != NULL) {
+		else if (str[i] == 'd' && str[i + 1] == 'z' && str[i + 2] == '=') {
 			len -= 2;
-			ptr += 3;
+			i += 3;
+			
+			continue;
 		}
 
+		else if (str[i] == 'd' && str[i + 1] == '-') {
+			len--;
+			i += 2;
+			continue;
+		}
+
+		else if (str[i] == 'l' && str[i + 1] == 'j') {
+			len--;
+			i += 2;
+			continue;
+		}
+
+		else if (str[i] == 'n' && str[i + 1] == 'j') {
+			len--;
+			i += 2;
+			continue;
+		}
+
+		else if (str[i] == 's' && str[i + 1] == '=') {
+			len--;
+			i += 2;
+			continue;
+		}
+
+		else if (str[i] == 'z' && str[i + 1] == '=') {
+			len--;
+			i += 2;
+			
+			continue;
+		}
+
+		i++;
 	}
 
 	printf("%d", len);
-	
 
-	
+	return 0;
+
 }
