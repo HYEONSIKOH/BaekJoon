@@ -10,6 +10,8 @@ int main(void) {
 		while (num == 1) {
 			printf("1\n");
 			scanf("%d", &num);
+			if (num == 0)
+				return 0;
 		}
 		int* arr = (int*)malloc(sizeof(int) * num + 1);
 		int pk = 0;
@@ -17,11 +19,13 @@ int main(void) {
 		int k = 0;
 		int num2_sqrt = sqrt(2 * num);
 		int* sqrt_arr = (int*)malloc(sizeof(int) * num2_sqrt);
-		num++;
 		int pnum1 = num;
 
-		for (int i = 0; i < num + 1; i++)
-			arr[i] = pnum1++;
+		for (int i = 0; i < num; i++) {
+			arr[i] = pnum1 + 1;
+			pnum1++;
+		}
+			
 
 		for (int i = 2; i <= num2_sqrt; i++) {
 			count = 0;
@@ -34,10 +38,10 @@ int main(void) {
 		}
 
 		for (int i = 0; i < k; i++) {
-			if (sqrt_arr[i] >= num) pk++;
+			if (sqrt_arr[i] > num) pk++;
 		}
 
-		for (int i = 0; i < num + 1; i++) {
+		for (int i = 0; i < num; i++) {
 			int index = 0;
 			while (1) {
 				if (index >= k) {
