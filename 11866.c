@@ -44,14 +44,15 @@ int main(void) {
 
 	for (int i = 1; i <= size; i++) enqueue(&q, i);
 	printf("<");
-	while (num++ <= size) {
+	while (1) {
 		for (int i = 1; i <= count; i++) {
 			if (i == count)
 				printf("%d", dequeue(&q));
 			else
 				enqueue(&q, dequeue(&q));
 		}
-		if (num == size+1)
+
+		if (num++ == size+1)
 			break;
 		else
 			printf(", ");
