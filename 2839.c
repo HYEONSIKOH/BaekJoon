@@ -14,7 +14,6 @@ int main(void) {
 			if (sum == num)
 				ij = i + j;
 
-			if (k > ij)
 				k = ij;
 		}
 	}
